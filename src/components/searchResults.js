@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getProductsByQuery } from "../fetcher";
 import CategoryProduct from "./categoryProduct";
+import axios from "axios";
 
 const SearchResults = () => {
     const [products, setProducts] = React.useState({
@@ -14,7 +15,8 @@ const SearchResults = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const responseObject = await axios.get(`/products?q=${query}`);
+            const responseObject = await getProductsByQuery(query);
+            // const responseObject = await axios.get(`/products?q=${query}`);
             setProducts(responseObject);
         };
         fetchData();

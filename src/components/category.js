@@ -13,8 +13,8 @@ const Category = () => {
 
     React.useEffect(() => {
         const fetchData = async () => {
-        //   const responseObject = await getProducts(categoryId);
-        const response = await axios.get(`/products?catId=${categoryId}`); // Use Axios
+          const responseObject = await getProducts(categoryId);
+        // const response = await axios.get(`/products?catId=${categoryId}`); // Use Axios
             setProducts(responseObject);
         };
         fetchData();
