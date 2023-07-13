@@ -1,9 +1,8 @@
 import React from "react";
-
 import { useParams } from "react-router-dom";
 import { getProducts } from "../fetcher";
-
 import CategoryProduct from "./categoryProduct";
+import axios from 'axios';
 
 const Category = () => {
     const [products, setProducts] = React.useState({
@@ -15,6 +14,7 @@ const Category = () => {
     React.useEffect(() => {
         const fetchData = async () => {
           const responseObject = await getProducts(categoryId);
+        // const response = await axios.get(`/products?catId=${categoryId}`); // Use Axios
             setProducts(responseObject);
         };
         fetchData();
