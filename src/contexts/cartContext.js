@@ -1,12 +1,11 @@
 import React, { createContext, useReducer } from "react";
-
 import { CartReducer } from "./cartReducer";
 
 export const CartContext = createContext();
 
-const Storage =  sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
+const Storage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
 
-const initialState = { cartItems: Storage}
+const initialState = { cartItems: Storage }
 
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialState);
@@ -16,20 +15,17 @@ const CartContextProvider = ({ children }) => {
     return state.cartItems;
   }
 
-  const removeProduct = payload =>
-  {
+  const removeProduct = payload => {
     dispatch({ type: 'REMOVE', payload });
     return state.cartItems;
   }
 
-  const increaseQuantity = payload => 
-  {
+  const increaseQuantity = payload => {
     dispatch({ type: 'INCQTY', payload });
     return state.cartItems;
   }
 
-  const decreaseQuantity = payload => 
-  {
+  const decreaseQuantity = payload => {
     dispatch({ type: 'DECQTY', payload });
     return state.cartItems;
   }
