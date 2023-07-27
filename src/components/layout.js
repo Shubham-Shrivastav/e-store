@@ -11,6 +11,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
+import Box from '@mui/material/Box';
 import Search from "./search";
 
 const Layout = ({ categories }) => {
@@ -41,31 +42,35 @@ const Layout = ({ categories }) => {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Our Store
           </Typography>
-          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          {/* <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
             <HomeIcon fontSize="large" sx={{ mr: 2 }} />
-          </Link>
-          <Search />
+          </Link> */}
+          <Box sx={{ width: '75%' }}>
+            <Search />
+          </Box>
           <Link to="/basket" style={{ textDecoration: "none", color: "inherit" }}>
             <CartIcon fontSize="large" />
           </Link>
         </Toolbar>
       </AppBar>
 
-      <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
-        <List>
-          <ListItem button component={Link} to="/" onClick={toggleDrawer(false)}>
-            <ListItemText primary="Home" />
-          </ListItem>
-          <ListItem button component={Link} to="/basket" onClick={toggleDrawer(false)}>
-            <ListItemText primary="Basket" />
-          </ListItem>
-          <Divider />
-          {categories.errorMessage && (
-            <div>Error: {categories.errorMessage}</div>
-          )}
-          {categories.data && renderCategories()}
-        </List>
-      </Drawer>
+      <Box sx={{ borderRadius: '16px' }}>
+        <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
+          <List>
+            <ListItem button component={Link} to="/" onClick={toggleDrawer(false)}>
+              <ListItemText primary="Home" />
+            </ListItem>
+            <ListItem button component={Link} to="/basket" onClick={toggleDrawer(false)}>
+              <ListItemText primary="Basket" />
+            </ListItem>
+            <Divider />
+            {categories.errorMessage && (
+              <div>Error: {categories.errorMessage}</div>
+            )}
+            {categories.data && renderCategories()}
+          </List>
+        </Drawer>
+      </Box>
 
       <Outlet />
     </>
