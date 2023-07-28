@@ -226,9 +226,6 @@ const CategoryProduct = ({
                                 <Typography variant="subtitle1">FREE Delivery</Typography>
                             </Paper>
                         </Grid>
-                        <Grid item>
-                            {/* Here you can add any other product-specific information if needed */}
-                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
