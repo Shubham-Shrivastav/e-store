@@ -1,10 +1,6 @@
-import "./App.css";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import { getCategories } from "./fetcher";
-
 import ProductDetail from "./components/productDetail";
 import Basket from "./components/basket";
 import Checkout from "./components/checkout";
@@ -20,7 +16,7 @@ function App() {
         data: [],
     });
 
-    React.useEffect(() => {
+    useEffect(() => {
         const fetchData = async () => {
             const responseObject = await getCategories();
             setCategories(responseObject);
@@ -44,7 +40,7 @@ function App() {
                         <Route path="basket" element={<Basket />} />
                         <Route path="checkout" element={<Checkout />} />
                         <Route path="orderconfirmation" element={<OrderConfirmation />} />
-                        <Route path="search" element={<SearchResults /> } />
+                        <Route path="search" element={<SearchResults />} />
                         <Route
                             path="categories/:categoryId"
                             element={<Category />}
